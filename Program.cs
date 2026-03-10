@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Dynamic;
 
 namespace projet1;
 
@@ -28,19 +29,27 @@ class Program
          courses.Add(c1);
         courses.Add(c2);
         courses.Add(c3);
-        courses.Add(c4);
-Console.WriteLine("Liste des cours :");
+    courses.Add(c4);
 
-foreach (Course c in courses)
-{
-    c.Display();
-}
+    Console.WriteLine("Cours obligatoires :");
 
-     
+    foreach (Course c in courses)
+    {
+        if (c.IsMandatory)  // On vérifie si le cours est obligatoire
+        {
+            c.Display();    // Affiche seulement les cours obligatoires
+        }
     }
 
-    
+    Console.WriteLine("Liste des cours :");
+
+    foreach (Course c in courses)
+    {
+        c.Display();
+    }
+    }
 }
+
 class Student
 {
     private int id;
@@ -112,9 +121,8 @@ public void DisplayStudents()
         s.Display();
     }
 }
- 
-        
-    
- 
-    
+public bool IsMandatory
+{
+    get { return isMandatory; }
+}
 }
